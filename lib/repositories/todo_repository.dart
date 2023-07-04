@@ -1,5 +1,5 @@
-import 'package:test_riverpod/storages/local_storage.dart';
-import 'package:test_riverpod/models/todo/todo.dart';
+import 'package:mvvm_example/storages/local_storage.dart';
+import 'package:mvvm_example/models/todo/todo.dart';
 
 class TodoRepository {
   final LocalStorage _localStorage = LocalStorage();

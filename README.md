@@ -1,4 +1,4 @@
-# test_riverpod
+# mvvm_example
 
 A new Flutter project.
 

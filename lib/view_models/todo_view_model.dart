@@ -1,6 +1,6 @@
-import 'package:test_riverpod/models/todo/todo.dart';
-import 'package:test_riverpod/repositories/todo_repository.dart';
-import 'package:test_riverpod/view_models/view_model.dart';
+import 'package:mvvm_example/models/todo/todo.dart';
+import 'package:mvvm_example/repositories/todo_repository.dart';
+import 'package:mvvm_example/view_models/view_model.dart';
 
 class TodoViewModel extends ViewModel {
   final TodoRepository _todoRepository = TodoRepository();

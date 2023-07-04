@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:test_riverpod/view_models/todo_view_model.dart';
+import 'package:mvvm_example/view_models/todo_view_model.dart';
 
 class TodoTransmitter extends InheritedWidget {
   final TodoViewModel todoViewModel;

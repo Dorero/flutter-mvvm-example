@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:test_riverpod/transmitters/todo_transmitter.dart';
-import 'package:test_riverpod/view_models/todo_view_model.dart';
+import 'package:mvvm_example/transmitters/todo_transmitter.dart';
+import 'package:mvvm_example/view_models/todo_view_model.dart';
 
 class NewTodo extends StatelessWidget {
   NewTodo({super.key});

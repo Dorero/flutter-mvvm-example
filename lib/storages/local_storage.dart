@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import 'package:test_riverpod/models/todo/todo.dart';
+import 'package:mvvm_example/models/todo/todo.dart';
 
 class LocalStorage {
   create(String title, String desc, String status) async {

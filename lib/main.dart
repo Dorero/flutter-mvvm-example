@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:test_riverpod/models/todo/todo.dart';
+import 'package:mvvm_example/models/todo/todo.dart';
 import 'app.dart';
 
 void main() async {
