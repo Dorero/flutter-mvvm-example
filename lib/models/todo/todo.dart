@@ -1,14 +1,17 @@
-import 'package:isar/isar.dart';
+import 'package:hive/hive.dart';
 
 part 'todo.g.dart';
 
-@collection
+@HiveType(typeId: 0)
 class Todo {
-  Id id = Isar.autoIncrement;
+  @HiveField(0)
+   String title;
 
-  final String title;
-  final String desc;
-  final String status;
+  @HiveField(1)
+   String desc;
+
+  @HiveField(2)
+   String status;
 
   Todo({required this.title, required this.desc, required this.status});
 }

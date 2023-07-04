@@ -1,4 +1,3 @@
-import 'package:isar/isar.dart';
 import 'package:test_riverpod/storages/local_storage.dart';
 import 'package:test_riverpod/models/todo/todo.dart';
 
@@ -15,5 +14,9 @@ class TodoRepository {
 
   delete(int id) {
     _localStorage.delete(id);
+  }
+
+  deleteAll(List<int> indexes) {
+    _localStorage.deleteAll(indexes);
   }
 }
