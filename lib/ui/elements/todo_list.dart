@@ -35,83 +35,85 @@ class TodoList extends StatelessWidget {
               builder: (BuildContext context, Widget? child) {
                 return Padding(
                   padding: const EdgeInsets.all(30.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.7,
-                        child: ListView.builder(
-                          itemCount: todos.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            final flags = todoViewModel.completedStates[index];
-                            return Card(
-                              child: Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Checkbox(
-                                          value: flags.first,
-                                          onChanged: (value) {
-                                            flags.first = value!;
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.7,
+                          child: ListView.builder(
+                            itemCount: todos.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              final flags = todoViewModel.completedStates[index];
+                              return Card(
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Checkbox(
+                                            value: flags.first,
+                                            onChanged: (value) {
+                                              flags.first = value!;
+                                              todoViewModel.updateUi();
+                                            }),
+                                        Text(todos[index].title),
+                                        IconButton(
+                                          onPressed: () {
+                                            flags.last = !flags.last;
                                             todoViewModel.updateUi();
-                                          }),
-                                      Text(todos[index].title),
-                                      IconButton(
-                                        onPressed: () {
-                                          flags.last = !flags.last;
-                                          todoViewModel.updateUi();
-                                        },
-                                        icon: Icon(flags.last
-                                            ? Icons.keyboard_arrow_right
-                                            : Icons.keyboard_arrow_down),
-                                      )
-                                    ],
-                                  ),
-                                  flags.last
-                                      ? Column(
-                                          children: [
-                                            Text("Описание: ${todos[index].desc}"),
-                                            const SizedBox(
-                                              height: 10.0,
-                                            ),
-                                            Text("status: ${todos[index].status}"),
-                                          ],
+                                          },
+                                          icon: Icon(flags.last
+                                              ? Icons.keyboard_arrow_right
+                                              : Icons.keyboard_arrow_down),
                                         )
-                                      : const SizedBox.shrink()
-                                ],
-                              ),
-                            );
-                          },
+                                      ],
+                                    ),
+                                    flags.last
+                                        ? Column(
+                                            children: [
+                                              Text("Описание: ${todos[index].desc}"),
+                                              const SizedBox(
+                                                height: 10.0,
+                                              ),
+                                              Text("status: ${todos[index].status}"),
+                                            ],
+                                          )
+                                        : const SizedBox.shrink()
+                                  ],
+                                ),
+                              );
+                            },
+                          ),
                         ),
-                      ),
-                      todoViewModel.completedStates
-                              .where((element) => element.first == true)
-                              .isNotEmpty
-                          ? Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                ElevatedButton(
-                                  onPressed: () {
-                                    todoViewModel.markDone();
-                                  },
-                                  child: const Text("Its done!"),
-                                ),
-                                const SizedBox(
-                                  width: 10.0,
-                                ),
-                                ElevatedButton(
-                                  onPressed: () {
-                                    todoViewModel.deleteAll();
-                                  },
-                                  child: const Text("Delete!"),
-                                ),
-                              ],
-                            )
-                          : const SizedBox(),
-                    ],
+                        todoViewModel.completedStates
+                                .where((element) => element.first == true)
+                                .isNotEmpty
+                            ? Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      todoViewModel.markDone();
+                                    },
+                                    child: const Text("Its done!"),
+                                  ),
+                                  const SizedBox(
+                                    width: 10.0,
+                                  ),
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      todoViewModel.deleteAll();
+                                    },
+                                    child: const Text("Delete!"),
+                                  ),
+                                ],
+                              )
+                            : const SizedBox(),
+                      ],
+                    ),
                   ),
                 );
               },
